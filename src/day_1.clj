@@ -16,11 +16,7 @@
 
 ;; part 2
 (defn calculate-fuels-fuel [fuel]
-  (loop [current fuel
-         sum 0]
-    (if (> current 0)
-      (recur (mass-to-fuel current) (+ sum current))
-      sum)))
+  (reduce + (take-while pos? (iterate mass-to-fuel fuel))))
 
 (defn part-2 []
   (reduce #(+ %1 (calculate-fuels-fuel (mass-to-fuel %2))) 0 input))
