@@ -12,11 +12,11 @@
   (- (quot mass 3) 2))
 
 (defn part-1 []
-  (reduce #(+ %1  (mass-to-fuel %2)) 0 input))
+  (reduce + (map mass-to-fuel input)))
 
 ;; part 2
 (defn calculate-fuels-fuel [fuel]
   (reduce + (take-while pos? (iterate mass-to-fuel fuel))))
 
 (defn part-2 []
-  (reduce #(+ %1 (calculate-fuels-fuel (mass-to-fuel %2))) 0 input))
+  (reduce + (map calculate-fuels-fuel (map mass-to-fuel input))))
